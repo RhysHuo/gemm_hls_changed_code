@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.0)
 project(sdaccel_mm)
 
 # Target options 
-set(MM_PLATFORM "xilinx_u250_qdma_201920_1" CACHE STRING "Platform string for Vitis.")
+set(MM_PLATFORM "xilinx_u55c_gen3x16_xdma_2_202110_1" CACHE STRING "Platform string for Vitis.")
 set(MM_TARGET_CLOCK "" CACHE STRING "Target clock for kernel (uses default is left empty).")
 set(MM_ENABLE_PROFILING OFF CACHE BOOL "Collect profiling information.")
 set(MM_ENABLE_DEBUGGING OFF CACHE BOOL "Inject debugging cores to design.")
@@ -176,9 +176,9 @@ if(MM_MULT_RESOURCE)
 endif() 
 
 if(MM_TWO_DIMMS)
-  set(MM_PORT_MAPPING m_axi_gmem0:DDR[0] m_axi_gmem1:DDR[1] m_axi_gmem2:DDR[1])
+  set(MM_PORT_MAPPING m_axi_gmem0:HBM[0] m_axi_gmem1:HBM[1] m_axi_gmem2:HBM[1])
 else()
-  set(MM_PORT_MAPPING m_axi_gmem0:DDR[1] m_axi_gmem1:DDR[1] m_axi_gmem2:DDR[1])
+  set(MM_PORT_MAPPING m_axi_gmem0:HBM[1] m_axi_gmem1:HBM[1] m_axi_gmem2:HBM[1])
 endif()
 
 # Hardware kernel
